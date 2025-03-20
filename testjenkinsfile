@@ -3,12 +3,11 @@ pipeline {
 
     stages {
         stage ("Dep install"){
-            agent {docker {image "nodejs}}
+            agent {docker {image "node:14"
+                args '-u root:root'}}
             steps{
-                sh "set -x"  // Enable debug mode
-                sh "pwd"
-                sh "ls -l"
-                sh 'sudo chown -R 995:993 "/.npm"'
+               
+               // sh 'sudo chown -R 995:993 "/.npm"'
                 sh "npm install"
             }
         }
