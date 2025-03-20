@@ -1,6 +1,6 @@
 pipeline {
     agent {docker {image "node:14"
-                args '-u root:root'}}
+            args '-u root:root'}}
 
     stages {
         stage ("Dep install"){
@@ -12,9 +12,9 @@ pipeline {
             }
         }
     }
-    stage("package"){
-        steps{
-            sh "npm pack"
+        stage("package") {
+            steps{
+                sh "npm pack"
         }
     }
 }
