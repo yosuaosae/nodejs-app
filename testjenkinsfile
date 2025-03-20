@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage ("Dep install"){
-            agent {docker {image "node:14"}}
+            agent {docker {image "nodejs}}
             steps{
                 sh "set -x"  // Enable debug mode
                 sh "pwd"
