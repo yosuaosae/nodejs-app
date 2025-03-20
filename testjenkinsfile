@@ -18,5 +18,11 @@ pipeline {
                 sh "npm pack"
             }
         }
+        stage("upload artifact") {  // ✅ Moved inside `stages {}`
+            steps {
+                sh 'curl -uadmin:AP9EAEqsfnmeHcMRi1pXe34qyAU -T  \
+                *.tgz "http://34.235.115.149:8081/artifactory/utc-nodejs/utc-app${BUILD_ID}.tgz" '
+            }
+        }
     }
 }
