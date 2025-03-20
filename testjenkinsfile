@@ -1,20 +1,22 @@
 pipeline {
-    agent {docker {image "node:14"
-            args '-u root:root'}}
+    agent {
+        docker {
+            image "node:14"
+            args '-u root:root'
+        }
+    }
 
-    stages {
-        stage ("Dep install"){
-            
-            steps{
-               
-               // sh 'sudo chown -R 995:993 "/.npm"'
+    stages {  // ✅ Ensure all `stage` blocks are inside `stages {}`
+        stage("Dep install") {
+            steps {
                 sh "npm install"
             }
         }
-    }
-        stage("package") {
-            steps{
+
+        stage("package") {  // ✅ Moved inside `stages {}`
+            steps {
                 sh "npm pack"
+            }
         }
     }
 }
